@@ -111,34 +111,7 @@ namespace BCASRequireMates.Controllers
             return RedirectToAction("Users");
         }
 
-        ////Request Manage
-        // GET: Admin/Requests
-        public async Task<IActionResult> Requests()
-        {
-            var requests = await _context.UserDocumentRequests
-                .Include(r => r.Document)
-                //.Include(r => r.UserId)
-                .ToListAsync();
-
-            return View(requests);
-        }
-
-        // POST: Admin/UpdateRequestStatus
-        [HttpPost]
-        public async Task<IActionResult> UpdateRequestStatus(int id, string status)
-        {
-            var request = await _context.UserDocumentRequests.FindAsync(id);
-            if (request != null)
-            {
-                request.Status = status;
-                _context.Update(request);
-                await _context.SaveChangesAsync();
-            }
-            return RedirectToAction(nameof(Requests));
-        }
-
-
-
+        
 
 
 

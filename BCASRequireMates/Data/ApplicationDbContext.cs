@@ -12,14 +12,6 @@ namespace BCASRequireMates.Data
             
         }
         public DbSet<BCASRequireMates.Models.Document> Document { get; set; } = default!;
-        public DbSet<UserDocumentRequest> UserDocumentRequests { get; set; } = default;
-        //public DbSet<DocumentRequest> documentRequests { get; set; } = default!;
-
-
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    base.OnModelCreating(modelBuilder);
-        //    // Additional configuration if needed
-        //}
+        
     }
 }

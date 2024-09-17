@@ -52,10 +52,10 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 
-//seed Roles 
-//using (var scope = app.Services.CreateScope())
-//{
-//    await DbSeeder.Initialize(scope.ServiceProvider);
-//}
+//seed Roles
+using (var scope = app.Services.CreateScope())
+{
+    await DbSeeder.Initialize(scope.ServiceProvider);
+}
 
 app.Run();
