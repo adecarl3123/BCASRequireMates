@@ -1,0 +1,68 @@
+﻿@* @model DocumentRequest *@
+
+@model BCASRequireMates.Models.DocumentRequest
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Request a Document</h2>
+
+<form asp-action="SubmitRequest" enctype="multipart/form-data" method="post">
+    <div>
+        <label for="FirstName">First Name</label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label for="LastName">Last Name</label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label for="YearLevel">Year Level</label>
+        <input asp-for="YearLevel" class="form-control" />
+        <span asp-validation-for="YearLevel" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label for="Phone">Phone</label>
+        <input asp-for="Phone" class="form-control" />
+        <span asp-validation-for="Phone" class="text-danger"></span>
+    </div>
+
+    <h4>Available Documents</h4>
+    @foreach (var document in Model.AvailableDocuments)
+    {
+        <div>
+            <input type="checkbox" value="@document.DocumentId" />
+            <label>@document.DocumentName (@document.Price.ToString("C"))</label>
+            <input type="number" asp-for="AvailableDocuments[@document.DocumentId].Quantity" min="0" max="10" value="0" />
+        </div>
+    }
+
+    <div>
+        <label>Total Price: </label>
+        <span>@Model.TotalPrice.ToString("C")</span>
+    </div>
+
+    @* <div>
+        <label for="Image">Upload Photo</label>
+        <input asp-for="Image" type="file" class="form-control" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+ *@
+    <div>
+        <label for="GcashReference">GCash # Reference</label>
+        <input asp-for="GcashReference" class="form-control" />
+        <span asp-validation-for="GcashReference" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label for="Comments">Comments</label>
+        <textarea asp-for="Comments" class="form-control"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

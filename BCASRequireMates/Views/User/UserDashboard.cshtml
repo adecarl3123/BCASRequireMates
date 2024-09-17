@@ -1,0 +1,39 @@
+﻿@model BCASRequireMates.ViewModel.DocumentVM
+
+@* @{
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+} *@
+
+<h1>This is User Dashboard</h1>
+
+
+<form asp-action="Logout" asp-controller="Account" method="post" class="navbar-right">
+    <button type="submit" class="btn btn-link">Logout</button>
+</form>
+
+<h2>Available Documents</h2>
+
+<form method="Post">
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Document Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var document in Model.Documents)
+            {
+                <tr>
+                    <td>@document.DocumentName </td>
+                    <td>@document.Price </td>
+                    
+                </tr>
+            }
+        </tbody>
+
+    </table>
+    <button class="btn btn-primary" asp-action="SubmitRequest" asp-controller="DocumentRequest"> Request</button>
+</div>
+</form>
