@@ -15,7 +15,7 @@ var connectionString = builder.Configuration.GetConnectionString("connectionStri
 builder.Services.AddDbContext<ApplicationDbContext>(
     options => options.UseSqlServer(connectionString));
 
-builder.Services.AddIdentity<AppUser, IdentityRole>(
+builder.Services.AddIdentity<AppUser, IdentityRole<int>>(
     options =>
     {
         options.Password.RequiredUniqueChars = 0;

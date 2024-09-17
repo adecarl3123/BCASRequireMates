@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BCASRequireMates.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="Admin")]
     public class AdminController : Controller
     {
 
@@ -53,7 +53,7 @@ namespace BCASRequireMates.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await _userManager.FindByIdAsync(model.Id);
+                var user = await _userManager.FindByIdAsync(model.Id.ToString());
                 if (user != null)
                 {
                     user.FirstName = model.FirstName;
@@ -111,8 +111,10 @@ namespace BCASRequireMates.Controllers
             return RedirectToAction("Users");
         }
 
-        
-
+        //public async Task<IActionResult> Requests()
+        //{
+        //    return View(await _context.SubmitRequest.ToListAsync());
+        //}
 
 
     }
