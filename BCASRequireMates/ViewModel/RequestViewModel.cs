@@ -1,10 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BCASRequireMates.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace BCASRequireMates.ViewModel
 {
     public class RequestViewModel
     {
-        [Key]
+        
         public int Id { get; set; }
         public string FirstName { get; set; }
         [Required]
@@ -17,5 +18,6 @@ namespace BCASRequireMates.ViewModel
         public string PaymentReference { get; set; }
 
         public IFormFile? Photo { get; set; }
+        public RequestStatus Status { get; set; } // Use the RequestStatus enum
     }
 }

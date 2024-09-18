@@ -1,0 +1,69 @@
+﻿
+@model IEnumerable<BCASRequireMates.Models.Request>
+
+@{
+    ViewData["Title"] = "My Requests";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Payment Reference</th>
+            <th>Status</th>
+            <th>Image</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var request in Model)
+        {
+            <tr>
+                <td>@request.Id</td>
+                <td>@request.FirstName</td>
+                <td>@request.LastName</td>
+                <td>@request.Email</td>
+                <td>@request.PhoneNumber</td>
+                <td>@request.PaymentReference</td>
+                <td>@request.Status</td>
+                <td>
+                    @* @if (!string.IsNullOrEmpty(request.Image))
+                    {
+                        <img src="~/images/@request.Image" alt="Request Image" style="max-width: 100px; max-height: 100px;" />
+                    } *@
+                
+                    <!-- Clickable thumbnail image -->
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal-@request.Id">
+                        <img src="~/images/@Html.DisplayFor(modelItem => request.Image)" style="width:100px; height:100px;" />
+                    </a>
+
+                    <!-- Bootstrap Modal -->
+                    <div class="modal fade" id="imageModal-@request.Id" tabindex="-1" aria-labelledby="imageModalLabel-@request.Id" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="imageModalLabel-@request.Id">Image Preview</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Full-size image inside the modal -->
+                                    <img src="~/images/@Html.DisplayFor(modelItem => request.Image)" class="img-fluid" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                </td>
+
+                @* <td>@request.RequestDate.ToString("MM/dd/yyyy")</td> *@
+            </tr>
+        }
+    </tbody>
+</table>

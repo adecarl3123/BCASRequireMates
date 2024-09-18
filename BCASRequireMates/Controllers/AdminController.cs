@@ -117,5 +117,33 @@ namespace BCASRequireMates.Controllers
         //}
 
 
+
+        //Requests
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.Requests.ToListAsync());
+        }
+
+        public async Task<IActionResult> UpdateStatus()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateStatus(int id, RequestStatus status)
+        {
+            var request = await _context.Requests.FindAsync(id);
+            if (request == null)
+            {
+                return NotFound();
+            }
+
+            request.Status = status;
+            _context.Update(request);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(AdminDashboard)); // Redirect back to the admin dashboard or request list
+        }
     }
 }

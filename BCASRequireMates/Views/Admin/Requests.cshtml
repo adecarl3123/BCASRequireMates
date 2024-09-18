@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BCASRequireMates.Models.SubmitRequest>
+﻿@model IEnumerable<BCASRequireMates.Models.Request>
 
 @{
     ViewData["Title"] = "Index";
@@ -33,6 +33,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
             </th>
             <th></th>
         </tr>
@@ -78,7 +81,9 @@
                         </div>
                     </div>
                 </td>
-
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
 
                 <!--Commented the edit and delete so the admin can only see it-->
                 <td>

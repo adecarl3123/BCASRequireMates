@@ -12,10 +12,10 @@ namespace BCASRequireMates.Data
 
             //seedRoles
             var userManager = serviceProvider.GetService<UserManager<AppUser>>();
-            var roleManager = serviceProvider.GetService<RoleManager<IdentityRole>>();
+            var roleManager = serviceProvider.GetService<RoleManager<IdentityRole<int>>>();
             //await roleManager.CreateAsync(new IdentityRole("Admin")); //pwede din tong approach
-            await roleManager.CreateAsync(new IdentityRole(Roles.Admin.ToString()));
-            await roleManager.CreateAsync(new IdentityRole(Roles.User.ToString()));
+            await roleManager.CreateAsync(new IdentityRole<int>(Roles.Admin.ToString()));
+            await roleManager.CreateAsync(new IdentityRole<int>(Roles.User.ToString()));
 
             // Create the Admin user
             var adminUser = new AppUser

@@ -13,8 +13,10 @@ namespace BCASRequireMates.Data
             
         }
         public DbSet<BCASRequireMates.Models.Document> Document { get; set; } = default!;
-        public DbSet<BCASRequireMates.Models.SubmitRequest> SubmitRequest { get; set; } = default!;
-        
-        
+      
+        public DbSet<BCASRequireMates.Models.Request> Requests { get; set; } = default!;
+
+
+
     }
 }
